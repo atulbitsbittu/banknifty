@@ -20,7 +20,7 @@ def get_data(interval):
 def add_technical_indicators(df):
     df["rsi"] = ta.momentum.RSIIndicator(df["Close"]).rsi()
     df["macd"] = ta.trend.MACD(df["Close"]).macd_diff()
-    df["ema_20"] = ta.trend.EMAIndicator(df["Close"], window=20).ema_indicator()
+    df["ema_20"] = ta.trend.EMAIndicator(df["Close"], window=20).ema_indicator().values.flatten()
     df["ema_signal"] = df["Close"] > df["ema_20"]
     return df
 
